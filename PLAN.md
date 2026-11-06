@@ -35,6 +35,8 @@ This file describes what the app actually does, taken from the code in `source/`
 | **Cadence color** | Green: within ±3 of target. Orange: below target. Red: more than 8 below. Blue: above target. White: no target. |
 | Cue text | A short phrase under the cadence, such as "Land under hips" or "Elbows back, tall" |
 | "press LAP" | Shown in green when the step waits for you (landmark, hill base, drills) |
+| **"Run done!" reminder** | When the main run ends in weeks 1–3, the screen names the drill that comes next. The high alert tone and a buzz repeat every 30 s until you press LAP (or Save to skip). |
+| **Drill instructions** | Each drill step replaces the cadence readout with how to do the drill, taken from the spec. Example: "15 m: skip rhythmically, knees to hip height, land softly on your midfoot." |
 | Success tone + 1 s buzz | Workout finished |
 
 There are no 3-2-1 beeps before a step you start yourself with LAP (landmark pickups, hill strides, drills). They start right away with the high alert tone.
@@ -52,7 +54,7 @@ There are no 3-2-1 beeps before a step you start yourself with LAP (landmark pic
 | **W4 Run 1** | 10 min warm-up → 5 min → 3 min walk/jog → 5 min → cool-down until START → Save | 172, metronome |
 | **W4 Run 2** | 30 min "light and quick" | None. The summary compares you with your baseline. |
 
-Drills are optional. To skip them, press START → Save at "Run done!".
+Drills are optional. To skip them, press START → Save at "Run done!". In week 3, the cool-down cue reads "LAP: drills next".
 
 **Saving:** if you choose Save from the pause menu, the watch ends the workout and shows the summary screen first. START then saves and exits. BACK opens Save / Discard instead. If you finish every step, the summary appears on its own, and START opens Save / Discard.
 

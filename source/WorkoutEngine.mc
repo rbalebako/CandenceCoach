@@ -226,6 +226,11 @@ class WorkoutEngine {
             var s = current();
             var k = s[:kind];
             var rem = remaining();
+            // "Run done!" keeps nudging every 30 s until you press LAP.
+            if (s[:remind] == true && segElapsed % 30 == 0) {
+                tone(Attention.TONE_ALERT_HI);
+                vibe(100, 500);
+            }
             if (k == Plan.KIND_TIMED || k == Plan.KIND_UNTIL_TOTAL) {
                 var nx = nextSeg();
                 if (rem > 0 && rem <= 3 && nx != null && nx[:cd] == true) {

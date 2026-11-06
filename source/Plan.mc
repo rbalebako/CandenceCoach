@@ -129,32 +129,50 @@ module Plan {
     }
 
     // Post-run form drills, per week. Optional: stop the workout to skip them.
+    // Drill step with an on-screen instruction (:how, ~100 chars max so it
+    // fits the 7S screen). WorkoutView draws these with drawDrill().
+    function drill(seg, how) {
+        seg[:how] = how;
+        seg[:drill] = true;      // left out of the run's cadence stats
+        return seg;
+    }
+
+    // "Run done!" prompt before the drills. :remind = buzz again every 30 s
+    // until you press LAP (or stop the workout to skip the drills).
+    function drillPrompt(how) {
+        var s = drill(manual("Run done!", "LAP to start"), how);
+        s[:remind] = true;
+        return s;
+    }
+
+    // Post-run form drills, per week (from specs.md). Optional: stop the
+    // workout at "Run done!" to skip them.
     function drills(week) {
         var s = [];
         var i;
         if (week == 1) {
-            s.add(manual("Run done!", "LAP: start drills"));
+            s.add(drillPrompt("Drills next: A-skips, 2 x 15 m. LAP to start, or START > Save to skip."));
             for (i = 1; i <= 2; i++) {
-                s.add(withRep(manual("A-Skips", "15 m, LAP when done"), i, 2));
+                s.add(withRep(drill(manual("A-Skips", "LAP when done"),
+                    "15 m: skip rhythmically, knees to hip height, land softly on your midfoot."), i, 2));
             }
         } else if (week == 2) {
-            s.add(manual("Run done!", "LAP: start drills"));
+            s.add(drillPrompt("Drills next: high knees, 2 x 20 s in place. LAP to start, or START > Save to skip."));
             for (i = 1; i <= 2; i++) {
                 if (i > 1) {
-                    s.add(manual("High knees", "LAP for set 2"));
+                    s.add(drill(manual("High knees", "LAP for set 2"),
+                        "Rest. LAP to start set 2: 20 s of fast feet in place."));
                 }
                 var hk = work("High knees", "Fast feet!", 20, TGT_NONE, 0, false);
-                s.add(withRep(hk, i, 2));
+                s.add(withRep(drill(hk,
+                    "Run in place, fast feet: get each foot off the ground quickly. Don't lift high."), i, 2));
             }
         } else if (week == 3) {
-            s.add(manual("Run done!", "LAP: start drills"));
+            s.add(drillPrompt("Drills next: butt kicks, 2 x 15 m. LAP to start, or START > Save to skip."));
             for (i = 1; i <= 2; i++) {
-                s.add(withRep(manual("Butt kicks", "15 m, LAP when done"), i, 2));
+                s.add(withRep(drill(manual("Butt kicks", "LAP when done"),
+                    "15 m: jog lightly, heels up toward your glutes. Stay tall, core engaged."), i, 2));
             }
-        }
-        // Drill time is left out of the run's cadence stats.
-        for (i = 0; i < s.size(); i++) {
-            s[i][:drill] = true;
         }
         return s;
     }
@@ -204,7 +222,7 @@ module Plan {
                 s.add(withRep(work("Cadence block", "Land under hips", 120, TGT_REL, 8, true), i, 3));
                 s.add(withRep(easy("Walk / jog", "Recover", 120), i, 3));
             }
-            s.add(open("Cool-down", "LAP when done"));
+            s.add(open("Cool-down", "LAP: drills next"));
             s.addAll(drills(3));
 
         } else if (id == :w3r2) {
@@ -216,7 +234,7 @@ module Plan {
                 s.add(withRep(work("Hill stride", "Elbows back, tall", 15, TGT_NONE, 0, false), i, 4));
             }
             s.add(manual("Walk down", "LAP: cool-down"));
-            s.add(open("Cool-down", "LAP when done"));
+            s.add(open("Cool-down", "LAP: drills next"));
             s.addAll(drills(3));
 
         } else if (id == :w4r1) {

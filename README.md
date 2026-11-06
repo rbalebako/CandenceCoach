@@ -30,7 +30,7 @@ Green means within ±3 spm of the target. Orange means below it, red means more 
 | W4 Run 1 | 10 min warm-up → 5 min @ 172 → 3 min easy → 5 min @ 172 → cool-down |
 | W4 Run 2 | 30 min "light and quick". The summary shows your average versus your baseline. |
 
-\*Your plan doesn't list a warm-up for the hill strides, so I added a short one. Weeks 1–3 end with that week's drill (A-skips, high knees or butt kicks). It's optional: press START → Save to skip it.
+\*Your plan doesn't list a warm-up for the hill strides, so I added a short one. Weeks 1–3 end with that week's drill (A-skips, high knees or butt kicks). A "Run done!" screen names the drill and buzzes every 30 s until you press LAP. Each drill step shows how to do it. The drills are optional: press START → Save to skip them.
 
 **Stopping early:** START → Save shows the summary screen first (time, average cadence, on-target %, baseline). Press START again to save and exit.
 

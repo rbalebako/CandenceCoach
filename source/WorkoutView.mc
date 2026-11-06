@@ -94,9 +94,44 @@ class WorkoutView extends WatchUi.View {
         text(dc, h * 0.80, Graphics.FONT_SMALL, Graphics.COLOR_WHITE, "START to begin");
     }
 
+    // Drill steps: the instruction replaces the cadence readout, which
+    // means nothing while skipping or running in place.
+    hidden function drawDrill(dc, s) {
+        var w = dc.getWidth();
+        var h = dc.getHeight();
+        var name = s[:name];
+        if (s[:rep] != null) {
+            name += " " + s[:rep];
+        }
+        var titleColor = (s[:cd] == true) ? Graphics.COLOR_ORANGE : Graphics.COLOR_WHITE;
+        text(dc, h * 0.13, Graphics.FONT_SMALL, titleColor, name);
+
+        var body = Graphics.fitTextToArea(s[:how], Graphics.FONT_XTINY,
+                                          (w * 0.80).toNumber(), (h * 0.46).toNumber(), true);
+        if (body != null) {
+            text(dc, h * 0.47, Graphics.FONT_XTINY, Graphics.COLOR_WHITE, body);
+        }
+
+        if (s[:kind] == Plan.KIND_MANUAL) {
+            text(dc, h * 0.79, Graphics.FONT_SMALL, Graphics.COLOR_GREEN, s[:cue]);
+        } else {
+            text(dc, h * 0.79, Graphics.FONT_MEDIUM, Graphics.COLOR_WHITE, fmt(e.remaining()));
+        }
+
+        if (e.state == Plan.ST_PAUSED) {
+            text(dc, h * 0.91, Graphics.FONT_XTINY, Graphics.COLOR_YELLOW, "PAUSED - START");
+        } else {
+            text(dc, h * 0.91, Graphics.FONT_XTINY, Graphics.COLOR_LT_GRAY, fmt(e.totalElapsed));
+        }
+    }
+
     hidden function drawRun(dc) {
         var h = dc.getHeight();
         var s = e.current();
+        if (s[:how] != null) {
+            drawDrill(dc, s);
+            return;
+        }
         var tgt = e.targetFor(s);
 
         // segment title
