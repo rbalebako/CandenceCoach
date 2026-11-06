@@ -1,0 +1,12 @@
+# Signing keys: never commit these. The active key lives in ~/.garmin/
+*.der
+*.pem
+developer_key*
+garmin-key/
+
+# Build output (the debug XML contains local paths)
+bin/
+
+# macOS / editor
+.DS_Store
+.vscode/

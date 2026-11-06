@@ -1,0 +1,19 @@
+<settings>
+    <setting propertyKey="@Properties.baselineCadence" title="@Strings.BaselineTitle">
+        <settingConfig type="numeric" min="0" max="220"/>
+    </setting>
+    <setting propertyKey="@Properties.metronomeMode" title="@Strings.MetronomeTitle">
+        <settingConfig type="list">
+            <listEntry value="0">@Strings.MetTone</listEntry>
+            <listEntry value="1">@Strings.MetVibe</listEntry>
+            <listEntry value="2">@Strings.MetBoth</listEntry>
+            <listEntry value="3">@Strings.MetOff</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.beatDivider" title="@Strings.BeatTitle">
+        <settingConfig type="list">
+            <listEntry value="1">@Strings.BeatEvery</listEntry>
+            <listEntry value="2">@Strings.BeatRight</listEntry>
+        </settingConfig>
+    </setting>
+</settings>

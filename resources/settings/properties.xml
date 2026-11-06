@@ -1,0 +1,5 @@
+<properties>
+    <property id="baselineCadence" type="number">0</property>
+    <property id="metronomeMode" type="number">2</property>
+    <property id="beatDivider" type="number">1</property>
+</properties>

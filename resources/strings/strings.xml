@@ -1,0 +1,12 @@
+<strings>
+    <string id="AppName">Cadence Coach</string>
+    <string id="BaselineTitle">Baseline cadence (0 = use measured)</string>
+    <string id="MetronomeTitle">Metronome</string>
+    <string id="MetTone">Beep</string>
+    <string id="MetVibe">Vibrate</string>
+    <string id="MetBoth">Beep + vibrate</string>
+    <string id="MetOff">Off</string>
+    <string id="BeatTitle">Metronome beat on</string>
+    <string id="BeatEvery">Every step</string>
+    <string id="BeatRight">Right foot only (half rate)</string>
+</strings>
